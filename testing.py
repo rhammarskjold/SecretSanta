@@ -35,12 +35,26 @@ def checkRandomFromOrder():
 
 	return records
 
-correct = checkCorrect()
-if not correct:
-	print "incorrect"
+#check percentage who recieve gifts from those they gift
+def checkRandomFromGifting():
+	count = 0
+	names = list(range(elements))
+	to = list(names)
+	for i in range(n):
+		randomize(names, to)
+		for j in range(elements):
+			if names[j] == to[names[j]]:
+				count += 1
 
-randOrderRecords = checkRandomFromOrder()
-print randOrderRecords
+	return float(count) / float(n * elements)
+
+print "testing %d times for %d elements" % (n, elements)
+
+print "correct? %r" % checkCorrect()
+
+print checkRandomFromOrder()
+
+print checkRandomFromGifting()
 
 
 
