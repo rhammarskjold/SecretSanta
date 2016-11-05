@@ -3,9 +3,9 @@ Small python project that facilitates the assignment of gifting in secret santa
 
 Author: Ryan Hammarskjold
 
-files: SecretSanta.py
+files: SecretSanta.py, RandomSanta.py, testing.py
 
-dependencies: sys, os, random
+dependencies: sys, os, random, numpy
 
 python version: 2.7.12
 
