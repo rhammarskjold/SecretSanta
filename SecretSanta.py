@@ -10,7 +10,7 @@ to = list(names)
 random.shuffle(to)
 random.shuffle(names)
 
-dirName = "./%s" % sys.argv[2]
+dirName = "%s" % sys.argv[2]
 os.mkdir(dirName)
 
 for index in range(0, len(names) - 1):
