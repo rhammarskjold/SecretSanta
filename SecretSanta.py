@@ -1,33 +1,22 @@
-import random
 import sys
 import os
 
-file = open(sys.argv[1], "r")
-names = file.read().splitlines()
+from RandomSanta import randomize
 
-to = list(names)
+def main(namesFile, dirName):
+	file = open(namesFile, "r")
+	names = file.read().splitlines()
 
-random.shuffle(to)
-random.shuffle(names)
+	os.mkdir(dirName)
 
-dirName = "%s" % sys.argv[2]
-os.mkdir(dirName)
+	to = list(names)
+	randomize(names, to)
 
-for index in range(0, len(names) - 1):
-	if names[index] == to[index]:
-		temp = to[index] 
-		to[index] = to[index + 1]
-		to[index + 1] = temp
+	for index in range(0, len(names) - 1):
+		fname = "%s/%s.txt" % (dirName, names[index])
+		contents = "%s, please get a gift for %s" % (names[index], to[index])
+		file = open(fname, "w")
+		file.write(contents)
+		file.close()
 
-index = len(names) - 1
-if names[index] == to[index]:
-	temp = to[index] 
-	to[index] = to[0]
-	to[0] = temp
-
-for index in range(0, len(names) - 1):
-	fname = "%s/%s.txt" % (dirName, names[index])
-	contents = "%s, please get a gift for %s" % (names[index], to[index])
-	file = open(fname, "w")
-	file.write(contents)
-	file.close()
+main(sys.argv[1], sys.argv[2])
