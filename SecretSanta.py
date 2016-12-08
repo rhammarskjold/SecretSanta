@@ -12,7 +12,7 @@ def main(namesFile, dirName):
 	to = list(names)
 	randomize(names, to)
 
-	for index in range(0, len(names) - 1):
+	for index in range(0, len(names)):
 		fname = "%s/%s.txt" % (dirName, names[index])
 		contents = "%s, please get a gift for %s" % (names[index], to[index])
 		file = open(fname, "w")
